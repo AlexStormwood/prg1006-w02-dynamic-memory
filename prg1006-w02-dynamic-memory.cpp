@@ -5,7 +5,18 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    // claim memory on free store  for this string 
+    std::string* message = new std::string("Hello World!");
+
+    std::cout << message << std::endl;
+
+	// release memory back to free store
+    delete message;
+    // specifically set the pointer back to null so we don't
+	// accidentally use it again and cause a runtime error
+    message = nullptr;
+	// confirm that the pointer is null
+    std::cout << message;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
