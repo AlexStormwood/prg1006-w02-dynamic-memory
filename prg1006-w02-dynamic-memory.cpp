@@ -48,7 +48,7 @@ int main()
 	}
 
 	// delete/release any claimed memory
-	delete shoppingList;
+	delete[] shoppingList;
 
 	return 0;
 
