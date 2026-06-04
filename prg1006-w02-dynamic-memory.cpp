@@ -17,6 +17,29 @@ int main()
     message = nullptr;
 	// confirm that the pointer is null
     std::cout << message;
+
+
+    // nothrow helps the app run even after something would've broken
+	// its memory allocation, e.g. bad user input, or a memory leak, etc.
+    // (std::nothrow)
+    try {
+        int* someNumberPointer = new int[10000000000000];
+        std::cout << someNumberPointer << std::endl;
+        if (someNumberPointer == nullptr) {
+            std::cout << "Memory allocation failed!" << std::endl;
+        }
+    }
+    catch (const std::bad_alloc& error) {
+        std::cout << "Memory allocation failed: " << error.what() << std::endl;
+        // we should return 1 here to close the app, but......
+        return 1;
+    }
+	
+    std::cout << "See if this message appears after the catch message!" << std::endl;
+
+
+
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
